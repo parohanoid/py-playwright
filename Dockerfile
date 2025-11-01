@@ -2,6 +2,8 @@ FROM mcr.microsoft.com/playwright/python:v1.40.0-focal
 
 WORKDIR /app
 
+ENV PYTHONPATH=/app
+
 # Install python deps first to leverage Docker cache
 COPY requirements.txt .
 RUN pip install -r requirements.txt
@@ -13,6 +15,6 @@ COPY . .
 RUN python -m playwright install --with-deps || true
 
 # Run your tests or script
-CMD ["pytest", "--numprocesses", "10", "--tracing=retain-on-failure"]
+CMD ["pytest", "-n", "10", "--tracing=retain-on-failure"]
 
 
