@@ -19,9 +19,9 @@ jobs:
       with:
         context: .
         push: false
-        tags: my-app:latest
+        tags: py-playwright:test
         load: true
 
     - name: Run Docker container
       run: |
-        docker run --rm --shm-size=2g my-app:latest
+        docker run --rm --shm-size=2g py-playwright:test
