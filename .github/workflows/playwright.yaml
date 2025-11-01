@@ -21,6 +21,8 @@ jobs:
         push: false
         tags: py-playwright:test
         load: true
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
 
     - name: Run Docker container
       run: |
