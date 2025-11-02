@@ -4,10 +4,11 @@ from playwright.sync_api import Page, expect
 from pages.home_page import HomePage
 from pages.signup_login_page import SignupLoginPage
 from pages.signup_page import SignupPage
-from pytest_csv_params import csv_params
+from pytest_csv_params.decorator import csv_params
 
-# reporting
-# read test data
+# reporting done
+# read test data done
+
 # mock APIs for UI tests
 # Key challenging automation scenarios
 # dataclass, pydantic
