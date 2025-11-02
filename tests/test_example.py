@@ -5,17 +5,56 @@ from pages.home_page import HomePage
 from pages.signup_login_page import SignupLoginPage
 from pages.signup_page import SignupPage
 
+# reporting
+# read test data
+# mock APIs for UI tests
+# Key challenging automation scenarios
+# dataclass, pydantic
+# locator strategies
+# 5 suggestions to make test repo reliable, maintainable, scalable, testable and early bug detection
+# BDD / Cucumber
+# README
+# Authentication strategies / Automation and API
+# Error handling
+# validate response against JSON schema / pytest, requests
+# REST API methods
+# DB check
+# Various Response codes
+# Check idempotency
+
+# performance testing / locust, WLM, SLAs, P95 and P99, reporting as per SLAs
+
+# self - review presentation
+
+# Argo CD for locust load generation
+# Spin up test environments using Terraform / Ansible for all the test suite
+# Gating logic for test environments / application code deployments
+# IAM roles and policies and secrets management for test environments
+
+# Observability / monitoring, gathering new relic, expose prometheus metrics with grafana, set alerts:
+# P95 and P99, error rates, SLA breaches, throughput, resource utilization
+# resilience testing / chaos engineering (partial failures, degraded latency
+
+# Testability suggestions (API-first features, instrumentation).
+# Bug prevention: static analysis, contract checks, mutation tests (awareness).
+# Test coverage vs risk coverage: choose the right levels.
+# Release gating and risk-based test selection.)
+
+# negotiating and influencing product and dev for better quality and testability
+# documentation practices for bugs, test cases and test strategies
+# Risk mitigation strategies for production issues, bugs, bug prioritization strategies
+
 
 @pytest.mark.parametrize(
     "name, email, password",
     [
         ("Rohan Panchal", "rohanpan@apple.com", "password123"),
         ("Alice Smith", "alicesmith@apple.com", "password456"),
-        ("Bob Johnson", "bobjohnson@apple.com", "password789"),
-        ("Charlie Brown", "charliebrown@apple.com", "password101112"),
-        ("Diana Prince", "dianaprince@apple.com", "password131415"),
-        ("Ethan Hunt", "ethanhunt@apple.com", "password161718"),
-        ("Fiona Gallagher", "fionagallagher@apple.com", "password181920"),
+        # ("Bob Johnson", "bobjohnson@apple.com", "password789"),
+        # ("Charlie Brown", "charliebrown@apple.com", "password101112"),
+        # ("Diana Prince", "dianaprince@apple.com", "password131415"),
+        # ("Ethan Hunt", "ethanhunt@apple.com", "password161718"),
+        # ("Fiona Gallagher", "fionagallagher@apple.com", "password181920"),
     ],
 )
 def test_register_user(page: Page, url, name, email, password):
