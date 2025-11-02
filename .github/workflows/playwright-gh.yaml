@@ -31,7 +31,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-traces
-          path: test-results/
+          path: traces/
       
       - name: Load test report history
         uses: actions/checkout@v3
