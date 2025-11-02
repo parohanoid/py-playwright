@@ -3,3 +3,5 @@ pytest-xdist
 allure-pytest
 pytest-csv-params
 requests
+# pytest-bdd
+# allure-pytest-bdd

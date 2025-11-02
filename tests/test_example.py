@@ -13,14 +13,17 @@ import requests
 # mock APIs for UI tests done
 
 # Key challenging automation scenarios
-# dataclass, pydantic
+
 # locator strategies
+
 # 5 suggestions to make test repo reliable, maintainable, scalable, testable and early bug detection
+
 # BDD / Cucumber
+
 # README
 # Authentication strategies / Automation and API
 # Error handling
-# validate response against JSON schema / pytest, requests
+# validate response against JSON schema / pytest, requests / pydantic
 # REST API methods
 # DB check
 # Various Response codes
