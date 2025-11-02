@@ -1,15 +1,17 @@
 import pytest
 import re
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, Route
 from pages.home_page import HomePage
 from pages.signup_login_page import SignupLoginPage
 from pages.signup_page import SignupPage
 from pytest_csv_params.decorator import csv_params
+import requests
 
 # reporting done
 # read test data done
 
 # mock APIs for UI tests
+
 # Key challenging automation scenarios
 # dataclass, pydantic
 # locator strategies
@@ -47,7 +49,7 @@ from pytest_csv_params.decorator import csv_params
 # Risk mitigation strategies for production issues, bugs, bug prioritization strategies
 
 
-@csv_params(data_file="test_data.csv", data_casts = {
+@csv_params(data_file="data/test_data.csv", data_casts = {
     "name": str,
     "email": str,
     "password": str
@@ -101,3 +103,16 @@ def test_register_user(page: Page, url, name, email, password):
 
     home_page.delete_account.click()
     expect(home_page.delete_account_confirmation).to_be_visible()
+
+def test_mock_the_fruit_api(page: Page):
+    def handle(route: Route):
+        json = [{"hell": "yeah"}]
+        # fulfill the route with the mock data
+        route.fulfill(json=json)
+
+    # Intercept the route to the fruit API
+    page.route("*/**/api/v1/fruits", handle)
+
+    r = requests.get("https://demo.playwright.dev/api-mocking/api/v1/fruits")
+    assert r.json() == [{"hell": "yeah"}]
+    assert r.status_code == 200

@@ -2,3 +2,4 @@ pytest-playwright
 pytest-xdist
 allure-pytest
 pytest-csv-params
+requests
