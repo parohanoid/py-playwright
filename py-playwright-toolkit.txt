@@ -1,8 +1,0 @@
-debug test
-PWDEBUG=1 pytest -s
-
-parallel execution
-pip install pytest-xdist
-pytest --numprocesses 2
-
-pytest --tracing=retain-on-failure
