@@ -1,6 +1,6 @@
 import pytest
 import re
-from playwright.sync_api import Page, expect, Route
+from playwright.sync_api import Page, expect, Route, APIRequestContext
 from pages.home_page import HomePage
 from pages.signup_login_page import SignupLoginPage
 from pages.signup_page import SignupPage
@@ -104,15 +104,34 @@ def test_register_user(page: Page, url, name, email, password):
     home_page.delete_account.click()
     expect(home_page.delete_account_confirmation).to_be_visible()
 
+# Mock an API
 def test_mock_the_fruit_api(page: Page):
     def handle(route: Route):
-        json = [{"hell": "yeah"}]
+        json = [{"name": "Strawberry", "id": 21}]
         # fulfill the route with the mock data
         route.fulfill(json=json)
 
     # Intercept the route to the fruit API
     page.route("*/**/api/v1/fruits", handle)
 
-    r = requests.get("https://demo.playwright.dev/api-mocking/api/v1/fruits")
-    assert r.json() == [{"hell": "yeah"}]
-    assert r.status_code == 200
+    # Go to the page
+    page.goto("https://demo.playwright.dev/api-mocking")
+
+    # Assert that the Strawberry fruit is visible
+    expect(page.get_by_text("Strawberry")).to_be_visible()
+
+
+
+# Log or spy on network API responses
+def test_log_api_response(page: Page):
+
+    with page.expect_response(lambda response: "/openapi.json" in response.url) as resp_info:
+        page.goto("https://petstore3.swagger.io/")
+    
+        response = resp_info.value  # this is the Response object
+
+        try:
+            data = response.json()
+            print(data)
+        except Exception as e:
+            print(f"Could not parse JSON: {e}")
