@@ -4,6 +4,7 @@ from playwright.sync_api import Page, expect
 from pages.home_page import HomePage
 from pages.signup_login_page import SignupLoginPage
 from pages.signup_page import SignupPage
+from pytest_csv_params import csv_params
 
 # reporting
 # read test data
@@ -45,18 +46,11 @@ from pages.signup_page import SignupPage
 # Risk mitigation strategies for production issues, bugs, bug prioritization strategies
 
 
-@pytest.mark.parametrize(
-    "name, email, password",
-    [
-        ("Rohan Panchal", "rohanpan@apple.com", "password123"),
-        ("Alice Smith", "alicesmith@apple.com", "password456"),
-        # ("Bob Johnson", "bobjohnson@apple.com", "password789"),
-        # ("Charlie Brown", "charliebrown@apple.com", "password101112"),
-        # ("Diana Prince", "dianaprince@apple.com", "password131415"),
-        # ("Ethan Hunt", "ethanhunt@apple.com", "password161718"),
-        # ("Fiona Gallagher", "fionagallagher@apple.com", "password181920"),
-    ],
-)
+@csv_params(data_file="test_data.csv", data_casts = {
+    "name": str,
+    "email": str,
+    "password": str
+})
 def test_register_user(page: Page, url, name, email, password):
     page.goto(url)
 
