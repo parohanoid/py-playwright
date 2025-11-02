@@ -10,7 +10,7 @@ import requests
 # reporting done
 # read test data done
 
-# mock APIs for UI tests
+# mock APIs for UI tests done
 
 # Key challenging automation scenarios
 # dataclass, pydantic

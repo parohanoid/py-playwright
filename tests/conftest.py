@@ -9,6 +9,10 @@ os.environ["BASE_URL"] = "https://www.automationexercise.com/"
 def url():
     return os.getenv("BASE_URL")
 
+@pytest.fixture
+def social_media_url():
+    return "https://www.cnarios.com/challenges/social-media-feed#challenge"
+
 @pytest.fixture(scope="session", autouse=True)
 def set_test_id_attribute(playwright: Playwright):
     playwright.selectors.set_test_id_attribute("data-qa")
